@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Responsive -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+				initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css" />
+
+    <!-- Title -->
+    <title>Bacus</title>
+
+    <!-- Meta Tags required for
+	Progressive Web App -->
+    <meta name="apple-mobile-web-app-status-bar" content="#000">
+    <meta name="theme-color" content="black">
+
+    <!-- Manifest File link -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/icon-192x192.png" />
+
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./database.js"></script>
+</head>
+
+<body>
+    <main class="centeredCollum">
+        <img src="assets/group.png" style="width: 200px; height: 200px" />
+        <h1 style="text-align: center; margin-bottom: 4px;">Bacus</h1>
+        <p style="text-align: center; opacity: 0.5">A sua base de clientes</p>
+        <br>
+        <section id="listOfClients" class="centeredCollum">
+            <div class="rowOfButtons">
+                <button id="createButton" onclick="changeToCreateForm()">
+                    Novo cliente
+                </button>
+                <button aria-busy="false" id="refreshButton" onclick="listTableLines()">
+                    Atualizar lista
+                </button>
+                <button id="clearButton" onclick="clearDatabase()">
+                    Apagar todos os dados
+                </button>
+            </div>
+            <br>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Criado em</th>
+                        <th scope="col">Editado em</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        <section id="newClient" style="width: 40%; display: none">
+            <form id="newClientForm" onsubmit="upcertCustomer(event)">
+                <div>
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name" />
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email" id="email" />
+                </div>
+                <div>
+                    <label for="phone">Telefone</label>
+                    <input type="text" name="phone" id="phone" />
+                </div>
+                <div>
+                    <button id="buttonSubmit" type="submit">Adicionar</button>
+                </div>
+            </form>
+            <button id="cancel-new-client" style="
+                            background-color: transparent;
+                            border-width: 2px;
+                            width: 100%;
+                        " onclick="changeToList(event)">Cancelar</button>
+        </section>
+    </main>
+</body>
+
+</html>
